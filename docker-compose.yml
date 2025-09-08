@@ -41,6 +41,17 @@ services:
       - waha_media:/app/.media
     ports:
       - "3000:3000"
+  
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass123
+      MYSQL_DATABASE: wpp_planix
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
 
   n8n:
     image: n8nio/n8n:latest
@@ -60,4 +71,5 @@ volumes:
   pgdata:
   waha_sessions:
   waha_media:
+  mysql_data:
   n8n_data:
